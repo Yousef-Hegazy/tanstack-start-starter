@@ -42,8 +42,16 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 
   shellComponent: RootDocument,
 
-  notFoundComponent: () => <div>This is not found page</div>,
-  errorComponent: (info) => <div>Oops! {info.error.message}</div>,
+  notFoundComponent: () => (
+    <div className="w-full h-screen flex items-center justify-center text-neutral-600 text-lg">
+      This is not found page
+    </div>
+  ),
+  errorComponent: ({ error }) => (
+    <div className="w-full h-screen flex items-center justify-center text-red-600 text-lg">
+      <p>{error.message}</p>
+    </div>
+  ),
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
